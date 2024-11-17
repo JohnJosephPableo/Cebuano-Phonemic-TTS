@@ -6,16 +6,16 @@ app = Flask(__name__)
 def index():
     return "Phonemic CEB-TTS is working"
 
-@app.route('/tokenize', methods=['POST'])
+@app.route('/tokenize', methods=['GET'])
 def tokenize():
     return "This will tokenize by word"
 
-@app.route('/convert-pred', methods=['POST'])
-def convertpred():
+@app.route('/convert-pred', methods=['GET'])
+def convert_pred():
     return "This will convert predictable words"
 
-@app.route('/convert-unpred', methods=['POST'])
-def convertpred():
+@app.route('/convert-unpred', methods=['GET'])
+def convert_unpred():
     return "This will convert unpredictable words"
 
 if __name__ == "__main__":
