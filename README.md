@@ -14,6 +14,7 @@ Install the dependencies
 pip install -r requirements.txt
 ```
 
+## Start the Project
 To run the application
 ```
 streamlit run index.py
