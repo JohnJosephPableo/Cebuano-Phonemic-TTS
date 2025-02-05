@@ -172,7 +172,7 @@ def split_into_syllables(tokens):
     def split_on_number(token):
         if token in [".", ","]:
             return [token]
-        return re.findall(r'\w+?[0-9]', token)  # Use \w+ to include letters and non-ASCII characters
+        return re.findall(r'\w+?[0-9]', token) or () # Use \w+ to include letters and non-ASCII characters
 
     flattened_list = [syllable for token in tokens for syllable in split_on_number(token)]
     return flattened_list
@@ -184,3 +184,4 @@ def convert(input):
     tokens = match_words_with_dataset(tokens)
     tokens = phonemize_closed_penult(tokens)
     return tokens
+    

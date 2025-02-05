@@ -2,6 +2,7 @@ import streamlit as st
 import requests
 api = "https://storiatatts.agreeableground-aec2017e.australiaeast.azurecontainerapps.io/generate-audio"
 from conversions import convert, split_into_syllables
+from synthesize import generate_audio
 
 st.write(""" 
 # Phonemically Accurate Cebuano Text-to-Speech
@@ -15,12 +16,16 @@ text = st.text_input(
 st.button("Generate", type="primary")
 col1, col2 = st.columns(2)
 if st.button:
+    phonetic_text = convert(text)
+    tokenized_text = split_into_syllables(phonetic_text)
+    concatenated_audio = generate_audio(tokenized_text)
+    st.audio("output.wav", format="audio/wav")
     with col1:
         st.write("## Words")
         st.write(convert(text))
     with col2:
         st.write("## Syllables")
-        st.write(split_into_syllables(convert(text)))
+        st.write(tokenized_text)
 
 
     # words = text.split()
